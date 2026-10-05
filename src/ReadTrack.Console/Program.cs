@@ -13,4 +13,20 @@ Book firstBook = new Book
 Book secondBook = firstBook;
 secondBook.Title = "Refactoring";
 
-Console.WriteLine($"Book {firstBook.Title}");
+
+static void Replace(ref Book book)
+{
+    book = new Book
+    {
+        Title = "DDD"
+    };
+}
+
+Book book = new Book
+{
+    Title = "Clean Code"
+};
+
+Replace(ref book);
+
+Console.WriteLine(book.Title);
