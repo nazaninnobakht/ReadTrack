@@ -9,4 +9,5 @@ public class Book
 {
     public string Title { get; set; } = string.Empty;
     public int PageCount { get; set; }
+    public int CurrentPage { get; set; }
 }

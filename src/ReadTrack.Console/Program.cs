@@ -4,29 +4,40 @@ using ReadTrack.Console;
 Console.WriteLine("Welcome to ReadTrack!");
 Console.WriteLine("Your personal reading tracker.");
 
-Book firstBook = new Book
+Console.WriteLine("Book title: ");
+string title = Console.ReadLine() ?? string.Empty;
+
+Console.WriteLine("Page count: ");
+string? pageCountInput = Console.ReadLine();
+
+if(!int.TryParse(pageCountInput, out var pageCount))
 {
-    Title = "Clean Code",
-    PageCount = 400,
-};
-
-Book secondBook = firstBook;
-secondBook.Title = "Refactoring";
-
-
-static void Replace(ref Book book)
-{
-    book = new Book
-    {
-        Title = "DDD"
-    };
+    Console.WriteLine("Page count must be a valid number.");
+    return;
 }
 
-Book book = new Book
+if(pageCount <= 0)
 {
-    Title = "Clean Code"
+    Console.WriteLine("Page count must be greater than zero.");
+    return;
+}
+
+Book book = new Book()
+{
+    Title = title,
+    PageCount = pageCount,
+    CurrentPage = 0
 };
 
-Replace(ref book);
+Console.WriteLine();
+Console.WriteLine("Book created:");
+Console.WriteLine($"Title: {book.Title}");
+Console.WriteLine($"Page: {book.PageCount}");
+Console.WriteLine("Current page: ");
+string? currentPageInput = Console.ReadLine();
 
-Console.WriteLine(book.Title);
+int CurrentPage = book.CurrentPage;
+
+double progress = (double)CurrentPage / pageCount * 100;
+
+Console.WriteLine($"Reading prpgress: {progress:F2}%");
