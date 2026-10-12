@@ -41,3 +41,6 @@ int CurrentPage = book.CurrentPage;
 double progress = (double)CurrentPage / pageCount * 100;
 
 Console.WriteLine($"Reading prpgress: {progress:F2}%");
+
+
+
